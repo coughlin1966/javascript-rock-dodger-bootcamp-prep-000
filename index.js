@@ -27,7 +27,7 @@ var gameInterval = null
     // DODGER is 20px high
     // GAME_HEIGHT - 20 - 20 = 360px;
     if (top > 360) {
-     console.log(top)
+     //console.log(top)
       const dodgerLeftEdge = positionToInteger(DODGER.style.left)
 
       // FIXME: The DODGER is 40 pixels wide -- how do we get the right edge?
