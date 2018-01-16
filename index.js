@@ -18,42 +18,42 @@ var gameInterval = null
  */
 
  function checkCollision(rock) {
- -  // implement me!
- -  // use the comments below to guide you!
+   // implement me!
+   // use the comments below to guide you!
 
- +  const top = positionToInteger(rock.style.top);
-  
+   const top = positionToInteger(rock.style.top);
+
     // rocks are 20px high
     // DODGER is 20px high
     // GAME_HEIGHT - 20 - 20 = 360px;
     if (top > 360) {
- +    console.log(top)
+     console.log(top)
       const dodgerLeftEdge = positionToInteger(DODGER.style.left)
-  
+
       // FIXME: The DODGER is 40 pixels wide -- how do we get the right edge?
 
- +    const dodgerRightEdge = positionToInteger(DODGER.style.left) + 40;
-  
+    const dodgerRightEdge = positionToInteger(DODGER.style.left) + 40;
 
- +    const rockLeftEdge = positionToInteger(rock.style.left);
-  
+
+    const rockLeftEdge = positionToInteger(rock.style.left);
+
       // FIXME: The rock is 20 pixel's wide -- how do we get the right edge?
 
- -
- -               /**
- -               * Think about it -- what's happening here?
- -               * There's been a collision if one of three things is true:
- -               * 1. The rock's left edge is < the DODGER's left edge,
- -               *    and the rock's right edge is > the DODGER's left edge;
- -               * 2. The rock's left edge is > the DODGER's left edge,
- -               *    and the rock's right edge is < the DODGER's right edge;
- -               * 3. The rock's left edge is < the DODGER's right edge,
- -               *    and the rock's right edge is > the DODGER's right edge
- -               */) {
- -    
- +    const rockRightEdge = positionToInteger(rock.style.left) + 20;
- +
- +    if ( ( rockLeftEdge < dodgerLeftEdge  && rockRightEdge > dodgerLeftEdge ) ||
+
+               /**
+               * Think about it -- what's happening here?
+               * There's been a collision if one of three things is true:
+               * 1. The rock's left edge is < the DODGER's left edge,
+               *    and the rock's right edge is > the DODGER's left edge;
+               * 2. The rock's left edge is > the DODGER's left edge,
+               *    and the rock's right edge is < the DODGER's right edge;
+               * 3. The rock's left edge is < the DODGER's right edge,
+               *    and the rock's right edge is > the DODGER's right edge
+             ) {*/
+
+    const rockRightEdge = positionToInteger(rock.style.left) + 20;
+
+    if ( ( rockLeftEdge < dodgerLeftEdge  && rockRightEdge > dodgerLeftEdge ) ||
  +         ( rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge ) ||
  +         ( rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge ) ||
  +         ( rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge)) {
@@ -61,29 +61,29 @@ var gameInterval = null
       }
     }
   }
-  
+
   function createRock(x) {
- 
+
  +  const rock = document.createElement('div');
-  
+
 
  +  rock.className = 'rock';
  +  rock.style.left = `${x}px`;
-  
+
     // Hmmm, why would we have used `var` here?
- 
+
  +  var top = 0;
-  
+
 
  +  rock.style.top = top;
-  
+
     /**
      * Now that we have a rock, we'll need to append
      * it to GAME and move it downwards.
      */
  -
  +  GAME.appendChild(rock);
-  
+
     /**
      * This function moves the rock. (2 pixels at a time
      * seems like a good pace.)
@@ -118,20 +118,20 @@ var gameInterval = null
  +       endGame();
  +     }
     }
-  
+
  -  // We should kick of the animation of the rock around here
  +  window.requestAnimationFrame(moveRock);
-  
+
  -  // Add the rock to ROCKS so that we can remove all rocks
  -  // when there's a collision
 
  +  ROCKS.push(rock);
-  
+
  -  // Finally, return the rock element you've created
- 
+
  +  return rock;
   }
-  
+
  -/**
  - * End the game by clearing `gameInterval`,
  - * removing all ROCKS from the DOM,
@@ -148,7 +148,7 @@ var gameInterval = null
  +
  +  alert("You LOSE!");
   }
-  
+
   function moveDodger(e) {
  -  // implement me!
  -  /**
@@ -168,7 +168,7 @@ var gameInterval = null
  +    moveDodgerRight();
  +  }
   }
-  
+
   function moveDodgerLeft() {
  -  // implement me!
  -  /**
@@ -184,7 +184,7 @@ var gameInterval = null
  +  }
  +  window.requestAnimationFrame(step);
   }
-  
+
   function moveDodgerRight() {
  -  // implement me!
  -  /**
@@ -200,7 +200,7 @@ var gameInterval = null
  +  }
  +  window.requestAnimationFrame(step);
   }
-  
+
   /**
 /**
  * @param {string} p The position property
