@@ -100,7 +100,7 @@ GAME.appendChild(rock)
   } else {
       rock.remove()
   }
-  if (checkCollision === true) {
+  if (checkCollision(rock) === true) {
       endGame()
   }
   }
