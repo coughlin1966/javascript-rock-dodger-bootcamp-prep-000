@@ -45,7 +45,6 @@ var gameInterval = null;
              ) {*/
 
     const rockRightEdge = positionToInteger(rock.style.left) + 20;
-
     if ( ( rockLeftEdge < dodgerLeftEdge  && rockRightEdge > dodgerLeftEdge ) ||
           ( rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge ) ||
          ( rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge ) ||
@@ -56,18 +55,13 @@ var gameInterval = null;
   }
 
   function createRock(x) {
-
   const rock = document.createElement('div');
-
-
   rock.className = 'rock';
   rock.style.left = `${x}px`;
 
     // Hmmm, why would we have used `var` here?
 
   var top = 0;
-
-
   rock.style.top = top;
 
     /**
@@ -171,7 +165,7 @@ var gameInterval = null;
     var left = positionToInteger(DODGER.style.left);
 
     if( left > 0 ) {
-      DODGER.style.left = `${left - 4}px`;
+      DODGER.style.left = `${left - 6}px`;
     }
   }
   window.requestAnimationFrame(step);
@@ -187,7 +181,7 @@ var gameInterval = null;
     var left = positionToInteger(DODGER.style.left);
 
     if ( left < 360 ) {
-      DODGER.style.left = `${left + 4}px`;
+      DODGER.style.left = `${left + 6}px`;
     }
   }
   window.requestAnimationFrame(step);
